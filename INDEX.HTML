@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="MAIN.CSS">
+</head>
+<body>
+    <h1>Coffee clock</h1>
+    <div class="coffee-clock">
+      <div class="plate"></div>
+      <div class="cup"></div>
+      <div class="handle"><div></div></div>
+      <div class="coffee"></div>
+      <div class="spoon"><div></div></div>
+    </div>    
+</body>
+</html>
+<script>
+  const clock = document.querySelector('.coffee-clock');
+  const handle = document.querySelector('.handle');
+  const spoon = document.querySelector('.spoon');
+  
+  function updateClock() {
+    const now = new Date();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+  
+    const hourAngle = (hours % 12 + minutes / 60) * 30;
+    const minuteAngle = minutes * 6;
+  
+    clock.style.setProperty('--angle-hour', `${hourAngle}deg`);
+    clock.style.setProperty('--angle-minute', `${minuteAngle}deg`);
+  }
+  
+  setInterval(updateClock, 1000);
+</script>
